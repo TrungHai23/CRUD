@@ -1,4 +1,4 @@
-var dienthoaiAPI = 'https://dummyjson.com/products/'
+var dienthoaiAPI = 'https://dummyjson.com/auth/RESOURCE'
 
 // let ttDienThoai = []
 
@@ -7,6 +7,7 @@ const getDienThoai = (callback) => {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json",
+            'Authorization': 'Bearer /* YOUR_TOKEN_HERE */',
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
     })
@@ -23,6 +24,7 @@ const deleteDienThoai = (id) => {
         method: "DELETE", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json",
+            'Authorization': 'Bearer /* YOUR_TOKEN_HERE */',
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
     })
@@ -36,7 +38,7 @@ const deleteDienThoai = (id) => {
 const editDienThoai = (id, data, callback) => {
     fetch(dienthoaiAPI + id, {
         method: 'PUT', /* or PATCH */
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json','Authorization': 'Bearer /* YOUR_TOKEN_HERE */', },
         body: JSON.stringify(data)
     })
         .then((response) => {
@@ -50,9 +52,9 @@ const editDienThoai = (id, data, callback) => {
 }
 
 const createDienThoai = (data, callback) => {
-        fetch('https://dummyjson.com/products/add', {
+        fetch(dienthoaiAPI, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json','Authorization': 'Bearer /* YOUR_TOKEN_HERE */', },
           body: JSON.stringify(
             data
           )
