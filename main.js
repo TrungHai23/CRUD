@@ -1,4 +1,4 @@
-var dienthoaiAPI = 'https://dummyjson.com/auth/RESOURCE'
+var dienthoaiAPI = 'https://dummyjson.com/products/'
 
 // let ttDienThoai = []
 
@@ -7,7 +7,6 @@ const getDienThoai = (callback) => {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json",
-            'Authorization': 'Bearer /* YOUR_TOKEN_HERE */',
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
     })
@@ -16,6 +15,7 @@ const getDienThoai = (callback) => {
             return response.json();
         })
         .then(data => data.products)
+        // .then(console.log)
         .then(callback)
 }
 
@@ -24,7 +24,6 @@ const deleteDienThoai = (id) => {
         method: "DELETE", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json",
-            'Authorization': 'Bearer /* YOUR_TOKEN_HERE */',
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
     })
@@ -38,7 +37,7 @@ const deleteDienThoai = (id) => {
 const editDienThoai = (id, data, callback) => {
     fetch(dienthoaiAPI + id, {
         method: 'PUT', /* or PATCH */
-        headers: { 'Content-Type': 'application/json','Authorization': 'Bearer /* YOUR_TOKEN_HERE */', },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     })
         .then((response) => {
@@ -52,9 +51,9 @@ const editDienThoai = (id, data, callback) => {
 }
 
 const createDienThoai = (data, callback) => {
-        fetch(dienthoaiAPI, {
+        fetch('https://dummyjson.com/products/add', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json','Authorization': 'Bearer /* YOUR_TOKEN_HERE */', },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(
             data
           )
@@ -91,7 +90,7 @@ const handleEditDienThoai = (id) => {
     const title = row.querySelector(`#td1-${id}`).innerText;
     const description = row.querySelector(`#td2-${id}`).innerText;
     const price = row.querySelector(`#td3-${id}`).innerText;
-    // const discountPercentage = row.querySelector(`#td4-${id}`).innerText;
+    // const discountPercentage = row.querySelector(#td4-${id}).innerText;
     console.log(title, description, price)
 
     // Hiển thị thông tin xuống form
